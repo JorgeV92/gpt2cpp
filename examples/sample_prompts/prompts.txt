@@ -1,0 +1,3 @@
+Explain what a transformer block does.
+Describe why byte pair encoding is useful.
+Write a short poem about compilers and moonlight.

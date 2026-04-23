@@ -1,9 +1,14 @@
 #ifndef GPT2CPP_DATA_DATASET_HPP
 #define GPT2CPP_DATA_DATASET_HPP
+#include <cstddef>
 #include <cstdint>
 #include <filesystem>
 #include <string>
+#include <utility>
 #include <vector>
+#ifdef GPT2CPP_HAVE_TORCH
+#include <torch/torch.h>
+#endif
 namespace gpt2cpp {
 class BPETokenizer;
 struct PackedDatasetInfo { std::size_t token_count{0}; int32_t min_id{0}; int32_t max_id{0}; std::filesystem::path path; };
@@ -17,7 +22,6 @@ public:
     std::size_t size() const;
     const std::vector<int32_t>& tokens() const;
 #ifdef GPT2CPP_HAVE_TORCH
-#include <torch/torch.h>
     std::pair<torch::Tensor, torch::Tensor> sample_batch(int batch_size, int sequence_length, std::uint64_t seed, const torch::Device& device) const;
 #endif
 private:

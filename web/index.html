@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>gpt2cpp chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <h1>gpt2cpp</h1>
+      <p>Local GPT-2-style C++ demo</p>
+    </header>
+    <section id="chat" class="chat"></section>
+    <form id="composer" class="composer">
+      <textarea id="prompt" rows="4" placeholder="Send a message..."></textarea>
+      <div class="row">
+        <span id="status">idle</span>
+        <button type="submit">Send</button>
+      </div>
+    </form>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

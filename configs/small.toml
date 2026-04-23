@@ -1,0 +1,50 @@
+[run]
+name = "small"
+output_root = "runs"
+seed = 1337
+device = "cuda"
+mixed_precision = false
+
+[tokenizer]
+dir = "artifacts/tokenizer"
+
+[data]
+train_bin = "artifacts/dataset/train.bin"
+val_bin = "artifacts/dataset/val.bin"
+batch_size = 8
+sequence_length = 128
+jsonl_text_field = "text"
+
+[model]
+vocab_size = 4096
+max_position_embeddings = 512
+n_embd = 256
+n_head = 8
+n_layer = 8
+dropout = 0.1
+tie_weights = true
+
+[training]
+max_steps = 5000
+learning_rate = 0.0002
+weight_decay = 0.01
+warmup_steps = 200
+grad_clip = 1.0
+eval_interval = 200
+save_interval = 500
+log_interval = 20
+eval_batches = 20
+resume_from = ""
+
+[inference]
+temperature = 0.8
+top_k = 50
+top_p = 0.95
+max_new_tokens = 192
+repetition_penalty = 1.08
+stop_sequences = "<|endoftext|>"
+
+[serving]
+host = "127.0.0.1"
+port = 8080
+web_root = "web"
